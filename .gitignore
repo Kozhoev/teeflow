@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.env
+*.log
+# ignore sample data backups and temporary copies
+sample-data.json
+*sample-data*.json
+*.backup
+*.bak
+
+# project-specific
+server/db/teeflow.db
+server/tmp
