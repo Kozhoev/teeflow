@@ -11,6 +11,7 @@ const SAMPLE = `orderId,customerName,designId,garmentModel,color,size,quantity,s
 export default function ImportPage(){
   const [file, setFile] = useState(null);
   const [text, setText] = useState('');
+  const [toast, setToast] = useState(null);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
