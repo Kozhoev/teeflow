@@ -73,6 +73,10 @@ export default function ImportPage(){
             <h4 style={{margin:0}}>Paste CSV</h4>
             <p className="subtitle">Use these columns: <strong>orderId, customerName, designId, garmentModel, color, size, quantity, status</strong></p>
             <textarea value={text} onChange={e=>setText(e.target.value)} placeholder={SAMPLE} rows={8} style={{width:'100%', padding:10, fontFamily:'monospace', borderRadius:8}} />
+            <div style={{marginTop:10}}>
+              <div className="subtitle" style={{marginBottom:6}}>Example CSV</div>
+              <pre className="code-sample">{SAMPLE}</pre>
+            </div>
             <div style={{marginTop:8}}>
               <button onClick={importText} disabled={loading}>{loading? 'Importing...':'Import Pasted CSV'}</button>
               <button className="btn-ghost" style={{marginLeft:8}} onClick={(e)=>{e.preventDefault(); setText(SAMPLE);}}>Insert Example</button>

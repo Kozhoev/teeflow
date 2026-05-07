@@ -1,4 +1,4 @@
-:root{ --accent:#0b5cff; --muted:#6b7280; --bg:#f8fafc; --card:#ffffff }
+:root{ --accent:#2563eb; --muted:#64748b; --bg:#f8fafc; --card:#ffffff; --sidebar:#0f172a; --sidebar-text:#e6eef9 }
 html,body,#__next{ height:100% }
 body{ font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:rgb(15,23,42); margin:0 }
 
@@ -8,24 +8,24 @@ body{ font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Ro
 
 /* Cards */
 .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:12px 0 }
-.card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.06); border:1px solid rgba(2,6,23,0.03) }
+.card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 8px 24px rgba(2,6,23,0.06); border:1px solid rgba(2,6,23,0.03) }
 .card .label{ color:var(--muted); font-size:13px }
 .card .big{ font-size:20px; margin-top:8px; font-weight:700 }
 
 /* Tables */
-.table{ width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(2,6,23,0.06) }
-.table th, .table td{ padding:12px 16px; border-bottom:1px solid #eef2f7; text-align:left }
-.table thead th{ background:rgba(15,23,42,0.02); color:rgb(30,41,59); font-weight:600 }
-.table tbody tr:hover{ background:rgba(11,92,255,0.03) }
+.table{ width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 8px 24px rgba(2,6,23,0.06) }
+.table th, .table td{ padding:14px 16px; border-bottom:1px solid #eef2f7; text-align:left }
+.table thead th{ background:rgba(2,6,23,0.03); color:var(--muted); font-weight:700; text-transform:uppercase; font-size:12px }
+.table tbody tr:hover{ background:rgba(37,99,235,0.03) }
 
 /* Forms & buttons */
-.form{ display:flex; gap:10px; margin:12px 0 18px }
-.form input, .form select, .form textarea{ padding:10px 12px; border:1px solid #e6eef6; border-radius:8px; background:var(--card) }
-button{ background:var(--accent); color:#fff; border:none; padding:10px 12px; border-radius:8px; cursor:pointer }
-.btn-ghost{ background:transparent; border:1px solid rgba(2,6,23,0.06); color:rgb(30,41,59) }
+.form{ display:flex; gap:12px; margin:12px 0 18px; flex-wrap:wrap }
+.form input, .form select, .form textarea{ padding:10px 12px; border:1px solid #e6eef6; border-radius:10px; background:var(--card); min-height:40px }
+button{ background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:10px; cursor:pointer; box-shadow:0 6px 18px rgba(37,99,235,0.12) }
+.btn-ghost{ background:transparent; border:1px solid rgba(2,6,23,0.06); color:rgb(30,41,59); padding:8px 12px }
 
 /* Badges */
-.badge{ display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px; color:#04243e }
+.badge{ display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px }
 .badge.pending{ background:#fef3c7; color:#92400e }
 .badge.inprod{ background:#dbf4ff; color:#075985 }
 .badge.completed{ background:#dcfce7; color:#14532d }
@@ -35,6 +35,17 @@ button{ background:var(--accent); color:#fff; border:none; padding:10px 12px; bo
 .stock.in{ background:#dcfce7; color:#14532d }
 .stock.low{ background:#fff7ed; color:#92400e }
 .stock.out{ background:#fee2e2; color:#7f1d1d }
+
+/* Sidebar */
+.sidebar{ background:var(--sidebar); color:var(--sidebar-text); min-height:100vh; padding:28px 20px; box-shadow:2px 0 12px rgba(2,6,23,0.06); position:fixed; left:0; top:0; bottom:0; width:240px }
+.main{ margin-left:240px }
+.sidebar-nav .nav-link{ color:var(--sidebar-text) }
+
+/* Code sample box for Import page */
+.code-sample{ background:#0b1220; color:#dbeafe; padding:12px; border-radius:10px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; font-size:13px; overflow:auto }
+
+/* Page card spacing */
+.page-card{ margin-bottom:20px }
 
 @media (max-width:1100px){ .cards{ grid-template-columns:repeat(2,1fr) } .form{ flex-direction:column } }
 

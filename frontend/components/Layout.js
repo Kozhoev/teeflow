@@ -7,10 +7,6 @@ export default function Layout({ children }){
         <Nav />
       </aside>
       <div className="main">
-        <header className="topbar">
-          <div className="topbar-left"></div>
-          <div className="topbar-right">&nbsp;</div>
-        </header>
         <div className="content">{children}</div>
       </div>
       <style jsx>{`
