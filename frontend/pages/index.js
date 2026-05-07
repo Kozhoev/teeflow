@@ -13,37 +13,43 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <h1 className="title">TeeFlow Dashboard</h1>
-      <div className="cards">
-        <div className="card">
-          <strong>Total Orders</strong>
-          <div className="big">{stats.total}</div>
-        </div>
-        <div className="card">
-          <strong>Pending</strong>
-          <div className="big">{stats.pending}</div>
-        </div>
-        <div className="card">
-          <strong>Completed</strong>
-          <div className="big">{stats.completed}</div>
-        </div>
-        <div className="card">
-          <strong>Low Stock Items</strong>
-          <div className="big">{stats.lowStock}</div>
+      <div className="page-card">
+        <h1 className="title">Dashboard</h1>
+        <p className="subtitle">Overview of recent activity and quick stats.</p>
+        <div className="cards">
+          <div className="card">
+            <div className="label">Total Orders</div>
+            <div className="big">{stats.total}</div>
+          </div>
+          <div className="card">
+            <div className="label">Pending Orders</div>
+            <div className="big">{stats.pending}</div>
+          </div>
+          <div className="card">
+            <div className="label">Completed Orders</div>
+            <div className="big">{stats.completed}</div>
+          </div>
+          <div className="card">
+            <div className="label">Low Stock Items</div>
+            <div className="big">{stats.lowStock}</div>
+          </div>
         </div>
       </div>
 
-      <h2 className="sub">Recent Orders</h2>
-      <table className="table">
-        <thead>
-          <tr><th>Order ID</th><th>Customer</th><th>Design</th><th>Garment</th><th>Color</th><th>Size</th><th>Qty</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          {recent.map(r => (
-            <tr key={r.id}><td>{r.order_id}</td><td>{r.customer_name}</td><td>{r.design_id}</td><td>{r.garment_model}</td><td>{r.color}</td><td>{r.size}</td><td>{r.quantity}</td><td>{r.status}</td></tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="page-card">
+        <h2 className="title">Recent Orders</h2>
+        <p className="subtitle">Latest orders placed in the system.</p>
+        <table className="table">
+          <thead>
+            <tr><th>Order ID</th><th>Customer</th><th>Design</th><th>Garment</th><th>Color</th><th>Size</th><th>Qty</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {recent.map(r => (
+              <tr key={r.id}><td>{r.order_id}</td><td>{r.customer_name}</td><td>{r.design_id}</td><td>{r.garment_model}</td><td>{r.color}</td><td>{r.size}</td><td>{r.quantity}</td><td><span className={`badge ${r.status === 'Pending' ? 'pending' : r.status === 'Completed' ? 'completed' : r.status === 'In Production' ? 'inprod' : 'cancelled'}`}>{r.status}</span></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Layout>
   )
 }

@@ -1,21 +1,27 @@
 import Link from 'next/link'
 
+function NavLink({ href, children }){
+  return (<div className="nav-link"><Link href={href}><a>{children}</a></Link></div>);
+}
+
 export default function Nav(){
   return (
-    <nav className="nav">
+    <nav className="sidebar-nav">
       <div className="brand">TeeFlow</div>
-      <div className="links">
-        <Link href="/">Dashboard</Link>
-        <Link href="/orders">Orders</Link>
-        <Link href="/inventory">Inventory</Link>
-        <Link href="/garments">Garments</Link>
-        <Link href="/import">Import</Link>
-        <Link href="/production">Production</Link>
+      <div className="menu">
+        <NavLink href="/">🏠 Dashboard</NavLink>
+        <NavLink href="/orders">📦 Orders</NavLink>
+        <NavLink href="/inventory">🗃️ Inventory</NavLink>
+        <NavLink href="/garments">👕 Garments</NavLink>
+        <NavLink href="/import">⬆️ Import</NavLink>
+        <NavLink href="/production">🏭 Production</NavLink>
       </div>
       <style jsx>{`
-        .nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:#0b5cff; color:#fff }
-        .brand{ font-weight:700 }
-        .links a{ margin-left:12px; color:#fff; text-decoration:none }
+        .sidebar-nav{ display:flex; flex-direction:column; gap:18px }
+        .brand{ font-size:20px; font-weight:800; color:var(--accent); padding-bottom:6px }
+        .menu{ display:flex; flex-direction:column; gap:6px }
+        .nav-link a{ display:block; padding:8px 10px; color:rgba(2,6,23,0.8); border-radius:8px; text-decoration:none }
+        .nav-link a:hover{ background:rgba(11,92,255,0.06); color:var(--accent) }
       `}</style>
     </nav>
   )

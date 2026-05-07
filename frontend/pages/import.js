@@ -56,28 +56,33 @@ export default function ImportPage(){
 
   return (
     <Layout>
-      <h1 className="title">Import Orders</h1>
+      <div className="page-card" style={{maxWidth:760, margin:'0 auto'}}>
+        <h1 className="title">Import Orders</h1>
+        <p className="subtitle">Upload a CSV file or paste CSV text to import orders quickly.</p>
 
-      <section className="card">
-        <h3>Upload CSV File</h3>
-        <form onSubmit={uploadFile} className="form">
-          <input type="file" accept=".csv" onChange={e=>setFile(e.target.files[0])} />
-          <button type="submit" disabled={loading}>{loading? 'Importing...':'Upload CSV'}</button>
-        </form>
-      </section>
+        <div style={{display:'grid', gap:12}}>
+          <div className="page-card">
+            <h4 style={{margin:0}}>Upload CSV File</h4>
+            <form onSubmit={uploadFile} className="form" style={{marginTop:12}}>
+              <input type="file" accept=".csv" onChange={e=>setFile(e.target.files[0])} />
+              <button type="submit" disabled={loading}>{loading? 'Importing...':'Upload CSV'}</button>
+            </form>
+          </div>
 
-      <section style={{marginTop:14}} className="card">
-        <h3>Or Paste CSV</h3>
-        <p>Use these column names (case-insensitive): <strong>orderId, customerName, designId, garmentModel, color, size, quantity, status</strong></p>
-        <textarea value={text} onChange={e=>setText(e.target.value)} placeholder={SAMPLE} rows={8} style={{width:'100%', padding:8, fontFamily:'monospace'}} />
-        <div style={{marginTop:8}}>
-          <button onClick={importText} disabled={loading}>{loading? 'Importing...':'Import Pasted CSV'}</button>
-          <button style={{marginLeft:8}} onClick={(e)=>{e.preventDefault(); setText(SAMPLE);}}>Insert Example</button>
+          <div className="page-card">
+            <h4 style={{margin:0}}>Paste CSV</h4>
+            <p className="subtitle">Use these columns: <strong>orderId, customerName, designId, garmentModel, color, size, quantity, status</strong></p>
+            <textarea value={text} onChange={e=>setText(e.target.value)} placeholder={SAMPLE} rows={8} style={{width:'100%', padding:10, fontFamily:'monospace', borderRadius:8}} />
+            <div style={{marginTop:8}}>
+              <button onClick={importText} disabled={loading}>{loading? 'Importing...':'Import Pasted CSV'}</button>
+              <button className="btn-ghost" style={{marginLeft:8}} onClick={(e)=>{e.preventDefault(); setText(SAMPLE);}}>Insert Example</button>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <p style={{marginTop:12}}>{message}</p>
-      <div className="toast-container">{toast && <Toast message={toast.msg} type={toast.type} onClose={()=>setToast(null)} />}</div>
+        {message && <p style={{marginTop:12}}>{message}</p>}
+        <div className="toast-container">{toast && <Toast message={toast.msg} type={toast.type} onClose={()=>setToast(null)} />}</div>
+      </div>
     </Layout>
   )
 }

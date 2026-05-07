@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 function OrderRow({ o, onDelete, onUpdate }) {
+  const statusClass = o.status === 'Pending' ? 'pending' : o.status === 'Completed' ? 'completed' : o.status === 'In Production' ? 'inprod' : 'cancelled';
   return (
     <tr>
       <td>{o.order_id}</td>
@@ -12,11 +13,11 @@ function OrderRow({ o, onDelete, onUpdate }) {
       <td>{o.color}</td>
       <td>{o.size}</td>
       <td>{o.quantity}</td>
-      <td>{o.status}</td>
+      <td><span className={`badge ${statusClass}`}>{o.status}</span></td>
       <td>
-        <button onClick={() => onUpdate(o.id, 'In Production')}>Start</button>
-        <button onClick={() => onUpdate(o.id, 'Completed')}>Complete</button>
-        <button onClick={() => onDelete(o.id)}>Delete</button>
+        <button className="btn-ghost" onClick={() => onUpdate(o.id, 'In Production')}>Start</button>
+        <button className="btn-ghost" onClick={() => onUpdate(o.id, 'Completed')}>Complete</button>
+        <button className="btn-ghost" onClick={() => onDelete(o.id)}>Delete</button>
       </td>
     </tr>
   )
@@ -47,25 +48,28 @@ export default function Orders() {
 
   return (
     <Layout>
-      <h1 className="title">Orders</h1>
-      <form onSubmit={add} className="form">
-        <input placeholder="Order ID" value={form.order_id} onChange={e=>setForm({...form, order_id:e.target.value})} />
-        <input placeholder="Customer" value={form.customer_name} onChange={e=>setForm({...form, customer_name:e.target.value})} />
-        <input placeholder="Design ID" value={form.design_id} onChange={e=>setForm({...form, design_id:e.target.value})} />
-        <select value={form.variant_id} onChange={e=>setForm({...form, variant_id:e.target.value})}>
-          <option value="">Select Garment / Variant</option>
-          {variants.map(v=> <option key={v.id} value={v.id}>{v.garment_model} — {v.color} — {v.size} (stock: {v.quantity})</option>)}
-        </select>
-        <input type="number" min="1" value={form.quantity} onChange={e=>setForm({...form, quantity:Number(e.target.value)})} />
-        <button type="submit">Add Order</button>
-      </form>
+      <div className="page-card">
+        <h1 className="title">Orders</h1>
+        <p className="subtitle">Manage customer orders and production status.</p>
+        <form onSubmit={add} className="form">
+          <input placeholder="Order ID" value={form.order_id} onChange={e=>setForm({...form, order_id:e.target.value})} />
+          <input placeholder="Customer" value={form.customer_name} onChange={e=>setForm({...form, customer_name:e.target.value})} />
+          <input placeholder="Design ID" value={form.design_id} onChange={e=>setForm({...form, design_id:e.target.value})} />
+          <select value={form.variant_id} onChange={e=>setForm({...form, variant_id:e.target.value})}>
+            <option value="">Select Garment / Variant</option>
+            {variants.map(v=> <option key={v.id} value={v.id}>{v.garment_model} — {v.color} — {v.size} (stock: {v.quantity})</option>)}
+          </select>
+          <input type="number" min="1" value={form.quantity} onChange={e=>setForm({...form, quantity:Number(e.target.value)})} />
+          <button type="submit">Add Order</button>
+        </form>
 
-      <table className="table">
-        <thead><tr><th>Order ID</th><th>Customer</th><th>Design</th><th>Garment</th><th>Color</th><th>Size</th><th>Qty</th><th>Status</th><th>Actions</th></tr></thead>
-        <tbody>
-          {orders.map(o => <OrderRow key={o.id} o={o} onDelete={remove} onUpdate={update} />)}
-        </tbody>
-      </table>
+        <table className="table">
+          <thead><tr><th>Order ID</th><th>Customer</th><th>Design</th><th>Garment</th><th>Color</th><th>Size</th><th>Qty</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>
+            {orders.map(o => <OrderRow key={o.id} o={o} onDelete={remove} onUpdate={update} />)}
+          </tbody>
+        </table>
+      </div>
     </Layout>
   )
 }
