@@ -9,6 +9,15 @@ body{ font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Ro
 /* Cards */
 .cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:12px 0 }
 .card{ background:var(--card); padding:18px; border-radius:12px; box-shadow:0 8px 24px rgba(2,6,23,0.06); border:1px solid rgba(2,6,23,0.03) }
+
+.cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:14px }
+.cards .card{ display:flex; flex-direction:column; justify-content:space-between; min-height:96px }
+.metric{ display:flex; align-items:center; justify-content:space-between }
+.metric .big{ font-size:32px; font-weight:800; color:var(--text) }
+.metric .label{ color:var(--muted); font-weight:600 }
+.metric .icon{ width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#fff }
+
+.page-card{ background:transparent; padding:0 0 18px 0 }
 .card .label{ color:var(--muted); font-size:13px }
 .card .big{ font-size:20px; margin-top:8px; font-weight:700 }
 
@@ -35,6 +44,21 @@ button{ background:var(--accent); color:#fff; border:none; padding:10px 14px; bo
 .stock.in{ background:#dcfce7; color:#14532d }
 .stock.low{ background:#fff7ed; color:#92400e }
 .stock.out{ background:#fee2e2; color:#7f1d1d }
+
+/* Page titles */
+.title{ font-size:28px; margin:0 0 6px; color:var(--text); font-weight:800 }
+.subtitle{ color:var(--muted); margin:0 0 18px }
+
+/* Buttons */
+button { font-weight:700 }
+.top-actions{ display:flex; align-items:center; justify-content:flex-end; gap:8px }
+.search{ width:360px; max-width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px }
+
+/* Garment cards */
+.garment-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px }
+.garment-card{ background:var(--card); padding:16px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.04); display:flex; flex-direction:column; gap:10px }
+.color-chips{ display:flex; gap:8px }
+.chip{ width:20px; height:20px; border-radius:6px; border:1px solid rgba(15,23,42,0.06) }
 
 /* Sidebar */
 .sidebar{ background:var(--sidebar); color:var(--sidebar-text); min-height:100vh; padding:28px 20px; box-shadow:2px 0 12px rgba(2,6,23,0.06); position:fixed; left:0; top:0; bottom:0; width:240px }

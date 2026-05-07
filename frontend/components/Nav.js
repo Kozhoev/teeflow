@@ -38,8 +38,13 @@ function NavLink({ href, icon, label }){
 export default function Nav(){
   return (
     <nav className="sidebar-nav">
-      <div className="brand">TeeFlow</div>
-      <div className="subtitle">Order & Inventory</div>
+      <div style={{display:'flex',alignItems:'center',gap:10}}>
+        <div style={{width:36,height:36,borderRadius:10,background:'linear-gradient(135deg,#2563eb,#0ea5e9)',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:800,color:'#fff'}}>TF</div>
+        <div>
+          <div className="brand">TeeFlow</div>
+          <div className="subtitle">Production OS</div>
+        </div>
+      </div>
       <div className="menu">
         <NavLink href="/" icon="dashboard" label="Dashboard" />
         <NavLink href="/orders" icon="orders" label="Orders" />
@@ -48,11 +53,13 @@ export default function Nav(){
         <NavLink href="/import" icon="import" label="Import" />
         <NavLink href="/production" icon="production" label="Production" />
       </div>
+      <div style={{flex:1}} />
+      <div style={{fontSize:12,color:'rgba(255,255,255,0.6)'}}>v0.1 · Demo build</div>
       <style jsx>{`
-        .sidebar-nav{ display:flex; flex-direction:column; gap:14px; color:var(--sidebar-text) }
-        .brand{ font-size:20px; font-weight:800; color:#fff }
-        .subtitle{ font-size:12px; color:rgba(255,255,255,0.8); margin-bottom:6px }
-        .menu{ display:flex; flex-direction:column; gap:6px }
+        .sidebar-nav{ display:flex; flex-direction:column; gap:14px; color:var(--sidebar-text); height:100% }
+        .brand{ font-size:18px; font-weight:800; color:#fff }
+        .subtitle{ font-size:12px; color:rgba(255,255,255,0.85); margin-bottom:0 }
+        .menu{ display:flex; flex-direction:column; gap:8px; margin-top:8px }
       `}</style>
     </nav>
   )
